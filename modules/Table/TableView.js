@@ -41,9 +41,9 @@ window.Editor.Table.TableView = class{
 
         //Cabealho
         const valoresCabecalho = dados[0];
-        this.tableHTML += `<tr>
+        this.tableHTML += `<tr class='linha-cabecalho linha'>
                                 ${ valoresCabecalho.map(( valor )=>{
-                                    return `<td> ${ String(valor) } </td>`
+                                    return `<td class='coluna-cabecalho coluna'> ${ String(valor) } </td>`
                                 }).join(' ') }
                            </tr>`
 
@@ -51,9 +51,9 @@ window.Editor.Table.TableView = class{
         for( let i = 1 ; i < dados.length ; i++ ){
             const valores = dados[i];
 
-            this.tableHTML += `<tr>
+            this.tableHTML += `<tr class='linha'>
                                   ${ valores.map(( valor )=>{
-                                      return `<td> ${valor} </td>`
+                                      return `<td class='coluna'> ${valor} </td>`
                                   }).join(' ') }
                                </tr>`
         }

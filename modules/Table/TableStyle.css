@@ -1,0 +1,21 @@
+
+.linha{
+    border: solid 1px black !important;
+    background-color: rgb(126, 126, 126);
+}
+
+.coluna{
+    padding: 20px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.linha-cabecalho{
+    
+}
+
+.coluna-cabealho{
+    text-transform: uppercase;
+    font-weight: bolder;
+}
