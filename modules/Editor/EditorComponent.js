@@ -17,6 +17,16 @@ window.Editor.EditorComponent = class{
         return this.dados;
     }
 
+    setDados(dados){
+        this.dados = dados;
+    }
+
+    //Usado para atualizar os dados da tabela
+    updateData(dados){
+        this.view.table.updateData(dados);
+        this.render();
+    }
+
     render(){
         this.view.render();
     }

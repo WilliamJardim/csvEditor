@@ -4,6 +4,7 @@ window.Editor.Table.TableView = class{
         this.name = `view-${ fatherContext.getName() }`;
         this.id = `view-${ fatherContext.getId() }`;
         this.dom = fatherContext.htmlElement || document.body;
+        this.fatherContext = fatherContext;
 
         this.tableHTML = `
         
@@ -34,8 +35,8 @@ window.Editor.Table.TableView = class{
 
     render(){
         //Exibe os dados
-        const dados = this.component.getDados();
-        this.tableHTML = this.tableHTML || ""; // Inicializa a variável apenas se estiver indefinida
+        const dados = this.fatherContext.fatherContext.getComponent().getDados();
+        this.tableHTML = ""; // Inicializa a variável apenas se estiver indefinida
         this.tableHTML += `<table>`; // Usa += para acrescentar
 
         //Cabealho

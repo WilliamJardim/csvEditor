@@ -4,7 +4,7 @@ window.Editor.EditorView = class{
         this.name = `view-${ fatherContext.getName() }`;
         this.id = `view-${ fatherContext.getId() }`;
         this.dom = document.body;
-        this.table = new window.Editor.Table.Table();
+        this.table = new window.Editor.Table.Table({}, this);
 
         this.htmlElement = document.createElement('div');
         this.htmlElement.setAttribute('class', 'editor-body');

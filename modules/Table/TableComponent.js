@@ -1,17 +1,13 @@
 window.Editor.Table.TableComponent = class{
-    constructor( config={} ){
+    constructor( config={}, fatherContext ){
         //Config
         this.name = config.name || '';
         this.id = new Date().getTime();
-        this.dados = null;
+        this.fatherContext = fatherContext;
 
         //Partes
         this.controller = new window.Editor.Table.TableController(this);
         this.view = new window.Editor.Table.TableView(this);
-    }
-
-    updateData(dados){
-        this.dados = dados;
     }
 
     getDados(){
@@ -28,6 +24,11 @@ window.Editor.Table.TableComponent = class{
 
     render(){
         this.view.render();
+    }
+
+    updateData(dados){
+        this.fatherContext.getComponent().setDados( dados );
+        this.render();
     }
 
     getName(){
