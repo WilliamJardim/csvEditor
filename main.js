@@ -1,1 +1,3 @@
-window.editor = new Editor();
+window.editor = new window.Editor.Editor({
+    name: 'Editor'
+});
