@@ -2,6 +2,7 @@ window.Editor.EditorComponent = class{
     constructor( config={} ){
         //Config
         this.name = config.name || '';
+        this.dados = config.dados || [[]];
         this.id = new Date().getTime();
 
         //Partes
@@ -10,6 +11,10 @@ window.Editor.EditorComponent = class{
 
         //Renderiza
         this.render();
+    }
+
+    getDados(){
+        return this.dados;
     }
 
     render(){

@@ -6,6 +6,28 @@ window.Editor.EditorView = class{
         this.dom = document.body;
         this.table = new window.Editor.Table.Table();
 
+        this.htmlElement = document.createElement('div');
+        this.htmlElement.setAttribute('class', 'editor-body');
+        this.add();
+    }
+
+    destroy(){
+        this.dom.removeChild(this.htmlElement);
+    }
+
+    add(){
+        this.dom.appendChild(this.htmlElement);
+    }
+
+    render(){
+        //Atualiza a tabela
+        this.table.updateData( this.getComponent().getDados() );
+        this.table.render();
+
+        this.destroy();
+        this.add();
+
+        //Renderiza a VIEW
         this.html = `
             <div>
                 <h2> Tabela sem nome <h2>
@@ -21,24 +43,6 @@ window.Editor.EditorView = class{
             </div>
         `;
 
-        debugger
-
-        this.htmlElement = document.createElement('div');
-        this.htmlElement.setAttribute('class', 'editor-body');
-        this.add();
-    }
-
-    destroy(){
-        this.dom.removeChild(this.htmlElement);
-    }
-
-    add(){
-        this.dom.appendChild(this.htmlElement);
-    }
-
-    render(){
-        this.destroy();
-        this.add();
         this.htmlElement.innerHTML = this.html;
     }
 

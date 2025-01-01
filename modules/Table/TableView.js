@@ -5,10 +5,16 @@ window.Editor.Table.TableView = class{
         this.id = `view-${ fatherContext.getId() }`;
         this.dom = fatherContext.htmlElement || document.body;
 
+        this.tableHTML = `
+        
+        `;
+
         this.html = `
             <div>
                 <div class='table-content'>
-                    teste
+                    
+                    ${ this.tableHTML }
+
                 </div>
 
             </div>
@@ -27,8 +33,44 @@ window.Editor.Table.TableView = class{
     }
 
     render(){
-        this.destroy();
-        this.add();
+        //Exibe os dados
+        const dados = this.component.getDados();
+        this.tableHTML = this.tableHTML || ""; // Inicializa a variável apenas se estiver indefinida
+        this.tableHTML += `<table>`; // Usa += para acrescentar
+
+        //Cabealho
+        const valoresCabecalho = dados[0];
+        this.tableHTML += `<tr>
+                                ${ valoresCabecalho.map(( valor )=>{
+                                    return `<td> ${ String(valor) } </td>`
+                                }).join(' ') }
+                           </tr>`
+
+        //Corpo dos dados
+        for( let i = 1 ; i < dados.length ; i++ ){
+            const valores = dados[i];
+
+            this.tableHTML += `<tr>
+                                  ${ valores.map(( valor )=>{
+                                      return `<td> ${valor} </td>`
+                                  }).join(' ') }
+                               </tr>`
+        }
+
+        this.tableHTML += `</table>`;
+
+        //Atualiza a VIEW
+        this.html = `
+            <div>
+                <div class='table-content'>
+                    
+                    ${ this.tableHTML }
+
+                </div>
+
+            </div>
+        `;
+
         this.htmlElement.innerHTML = this.html;
     }
 

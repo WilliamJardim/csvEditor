@@ -3,14 +3,27 @@ window.Editor.Table.TableComponent = class{
         //Config
         this.name = config.name || '';
         this.id = new Date().getTime();
+        this.dados = null;
 
         //Partes
         this.controller = new window.Editor.Table.TableController(this);
         this.view = new window.Editor.Table.TableView(this);
     }
 
+    updateData(dados){
+        this.dados = dados;
+    }
+
+    getDados(){
+        return this.dados;
+    }
+
     getHTML(){
         return this.view.getHTML();
+    }
+
+    setHTML(html){
+        this.view.setHTML(html);
     }
 
     render(){
