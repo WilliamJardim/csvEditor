@@ -1,0 +1,1 @@
+window.editor = new Editor();
