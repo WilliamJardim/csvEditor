@@ -1,3 +1,8 @@
-class Editor{
-    
+window.Editor = {}
+
+window.Editor.EditorController = class{
+    constructor(){
+        
+    }
 }
+
